@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import './App.css';
+
+import Navbar from './components/Navbar';
 
 export default class ClassComp extends Component {
 
@@ -12,7 +13,7 @@ export default class ClassComp extends Component {
     }
 
     componentDidMount() {
-        this.setState({ name: "Kedua" });
+        this.setState({ name: `Component App (Class Component)` });
     }
 
     onSetName = (e) => {
@@ -23,18 +24,11 @@ export default class ClassComp extends Component {
     render() {
         return (
             <div>
-                <nav>
-                    <ul>
-                        <li>
-                            <Link to="/">App</Link>
-                        </li>
-                        <li>
-                            <Link to="/classcomp">Class Components</Link>
-                        </li>
-                    </ul>
-                </nav>
-                <h1>Halo {this.state.name}</h1>
-                <input type="text" name="name" value={this.state.name} onChange={this.onSetName} />
+                <Navbar />
+                <div className="flex flex-col items-center justify-center w-full h-screen">
+                    <h1>Halo {this.state.name}</h1>
+                    <input type="text" name="name" onChange={this.onSetName} className="px-4 py-2 my-5 text-white bg-black rounded-xl" />
+                </div>
             </div>
         )
     }
